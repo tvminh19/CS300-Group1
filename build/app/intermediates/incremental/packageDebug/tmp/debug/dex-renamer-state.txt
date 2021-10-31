@@ -1,0 +1,4 @@
+#Sun Oct 31 20:07:27 ICT 2021
+base.0=/Users/mixel/Documents/Github/CS300-Group1/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
