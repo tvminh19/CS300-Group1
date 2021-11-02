@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:paylo_chat/components/custom_box.dart';
+import 'package:paylo_chat/pages/signup/signup_next.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({ Key? key }) : super(key: key);
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   _SignUpState createState() => _SignUpState();
@@ -53,45 +55,28 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
             const SizedBox(
-              height: 70,
+              height: 30,
             ),
-            SizedBox(
-              width: 350,
-              child: TextField(
-                decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.account_circle),
-                  label: const Text(
-                    'Email / Username',
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
+            CustomBox(
+              icon: Icon(Icons.account_circle),
+              content: 'Email/Username',
+              isObscure: true,
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
-            SizedBox(
-              width: 350,
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  suffixIcon: const Icon(Icons.password),
-                  label: const Text(
-                    'Password',
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
+            CustomBox(
+              icon: Icon(Icons.password),
+              content: 'Password',
+              isObscure: true,
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            CustomBox(
+              icon: Icon(Icons.password),
+              content: 'Confirm Password',
+              isObscure: true,
             ),
             const SizedBox(
               height: 5,
@@ -103,29 +88,23 @@ class _SignUpState extends State<SignUp> {
                 child: Text('Forgot Password?'),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text(
-                'SIGN UP',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14),
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-                fixedSize: const Size(170, 50),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    side: BorderSide(color: Colors.black)),
+            CircleAvatar(
+              radius: 30,
+              backgroundColor: Color.fromRGBO(51, 104, 206, 1),
+              child: IconButton(
+                icon: Icon(Icons.arrow_forward, color: Colors.white),
+                onPressed: () => {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUpNext()))
+                },
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 30,
             ),
             const Text('Or sign up with'),
             const SizedBox(
-              height: 40,
+              height: 30,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -145,26 +124,6 @@ class _SignUpState extends State<SignUp> {
                   size: 40,
                   color: Colors.black,
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  'Don\'t have an account?',
-                ),
-                TextButton(
-                    onPressed: null,
-                    child: Text(
-                      'Sign Up here',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontStyle: FontStyle.italic),
-                    )),
               ],
             ),
           ],
