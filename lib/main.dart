@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:paylo_chat/pages/chat/chat.dart';
+import 'package:paylo_chat/pages/home.dart';
+import 'package:paylo_chat/pages/login/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +12,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter Demo',
-      home: Chat(),
+    return MaterialApp(
+      title: 'Paylo! chat',
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.blueAccent,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      debugShowCheckedModeBanner: false,
+      home: Login(),
     );
   }
 }
