@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:paylo_chat/pages/signup/signup.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({ Key? key }) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,7 +106,7 @@ class _LoginState extends State<Login> {
             ElevatedButton(
               onPressed: () {},
               child: const Text(
-                'LOGIN',
+                'SIGN UP',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -124,7 +123,7 @@ class _LoginState extends State<Login> {
             const SizedBox(
               height: 25,
             ),
-            const Text('Or login with'),
+            const Text('Or sign up with'),
             const SizedBox(
               height: 40,
             ),
