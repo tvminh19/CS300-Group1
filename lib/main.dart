@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paylo_chat/pages/home.dart';
+import 'package:paylo_chat/pages/login/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.blueAccent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Home(),
+      home: Login(),
     );
   }
 }
