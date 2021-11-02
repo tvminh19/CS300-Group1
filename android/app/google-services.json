@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1036647595203",
+    "project_id": "paylo-chat",
+    "storage_bucket": "paylo-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036647595203:android:b28da4559f373d5deb3676",
+        "android_client_info": {
+          "package_name": "com.example.paylo_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036647595203-koocm8rddkfak3pg4a6mkns5h2lj0f8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFrYefd06x-1GIftwfnW9DvLoqBscFmNE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036647595203-koocm8rddkfak3pg4a6mkns5h2lj0f8s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
