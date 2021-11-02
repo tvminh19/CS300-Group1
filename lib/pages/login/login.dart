@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:paylo_chat/pages/signup/signup.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);

@@ -1,4 +1,3 @@
-import 'package:paylo_chat/models/user.dart';
 import 'package:paylo_chat/models/message.dart';
 
 class ChatRoom {
