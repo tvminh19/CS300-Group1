@@ -8,6 +8,7 @@ import 'package:paylo_chat/pages/personal/components/PersonalAppBar.dart';
 import 'package:paylo_chat/pages/personal/personal.dart';
 
 import 'chat/chat.dart';
+import 'friend/friend.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final Personal _personal = const Personal();
-  final AddFriend _addFriend = const AddFriend();
+  final Friend _friend = const Friend();
   final Chat _chat = const Chat();
 
   Widget _showPage = const Chat();
@@ -28,7 +29,7 @@ class _HomeState extends State<Home> {
       case 0:
         return _chat;
       case 1:
-        return _addFriend;
+        return _friend;
       case 2:
         return _personal;
       default:
