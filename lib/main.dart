@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paylo_chat/pages/login/login.dart';
+import 'package:paylo_chat/pages/signup/signup.dart';
 
 void main() {
   runApp(const MyApp());

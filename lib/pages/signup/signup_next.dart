@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:paylo_chat/pages/signup/signup.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:paylo_chat/components/custom_box.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUpNext extends StatefulWidget {
+  const SignUpNext({Key? key}) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _SignUpNextState createState() => _SignUpNextState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpNextState extends State<SignUpNext> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,45 +55,28 @@ class _LoginState extends State<Login> {
               ),
             ),
             const SizedBox(
-              height: 70,
+              height: 30,
             ),
-            SizedBox(
-              width: 350,
-              child: TextField(
-                decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.account_circle),
-                  label: const Text(
-                    'Email / Username',
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
+            CustomBox(
+              icon: Icon(Ionicons.pencil_sharp),
+              content: 'Your full name',
+              isObscure: false,
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
-            SizedBox(
-              width: 350,
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  suffixIcon: const Icon(Icons.password),
-                  label: const Text(
-                    'Password',
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
+            CustomBox(
+              icon: Icon(Icons.date_range_sharp),
+              content: 'Date of birth',
+              isObscure: false,
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            CustomBox(
+              icon: Icon(Icons.phone),
+              content: 'Phone number',
+              isObscure: false,
             ),
             const SizedBox(
               height: 5,
@@ -107,7 +91,7 @@ class _LoginState extends State<Login> {
             ElevatedButton(
               onPressed: () {},
               child: const Text(
-                'LOGIN',
+                'SIGN UP',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -122,11 +106,11 @@ class _LoginState extends State<Login> {
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 30,
             ),
-            const Text('Or login with'),
+            const Text('Or sign up with'),
             const SizedBox(
-              height: 40,
+              height: 30,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -146,29 +130,6 @@ class _LoginState extends State<Login> {
                   size: 40,
                   color: Colors.black,
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Don\'t have an account?',
-                ),
-                TextButton(
-                    onPressed: () => {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => SignUp()))
-                        },
-                    child: const Text(
-                      'Sign Up here',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontStyle: FontStyle.italic),
-                    )),
               ],
             ),
           ],
