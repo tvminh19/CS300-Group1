@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paylo_chat/pages/home.dart';
 import 'package:paylo_chat/pages/login/login.dart';
 import 'package:paylo_chat/pages/signup/signup.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: Home(),
     );
   }
 }

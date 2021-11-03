@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paylo_chat/pages/home.dart';
 import 'package:paylo_chat/pages/signup/signup.dart';
 
 class Login extends StatefulWidget {
@@ -105,7 +106,10 @@ class _LoginState extends State<Login> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home()))
+              },
               child: const Text(
                 'LOGIN',
                 style: TextStyle(
