@@ -1,0 +1,103 @@
+
+	==== Database ====
+
+Users:  collection
+[	
+	randomID:  document
+	{
+		email:  str (QR generator: qr_flutter) 		// PK
+		username:  str
+		fullname:  str
+		dob:  datetime
+		phone:  str
+		bio:  str
+		onlineStatus:  boolean         // update status realtime?
+		avatar:  				// Firebase Cloud Storage? 
+		
+		friends:  collection
+		[
+			randomID:  document
+			{
+				email:  str 		// FK
+			}
+
+			...
+		]
+	}
+
+	...
+]
+
+
+
+Chatrooms:  collection
+[
+	randomID:  document
+	{
+		name:  str
+
+		users:  collection
+		[
+			randomID:  document
+			{
+				email:  str
+			}
+		]
+		
+		messages:  collection
+		[
+			randomID:  document
+			{
+				fromUser:  str 			// FK
+				timeStamp:  datetime 	// PK
+				content:  str
+			}
+
+			...
+		]
+	}
+
+	...
+]
+
+
+
+
+
+
+	==== Model ====
+
+// authentication for logged in user
+//    -> use to identify who send what request
+//    ex: add friend, send new message...
+class CurrentUser
+{
+	email
+}
+
+// basic user info
+class GeneralUser
+{
+	// basic info of a user
+	//    -> use in chat list, chat room, friend list
+	fullname
+	avatar
+	bio
+	onlineStatus
+
+	// a dart late object of call UserInfo
+	//    -> only define when needed extra info
+	//    ex: view user info...
+	late userInfo
+}
+
+// user info in detail
+class UserInfo
+{
+	late String email;
+	late String phone;
+	late DateTime birthDate;
+}
+
+
+.... in progress ....
