@@ -94,9 +94,9 @@ class GeneralUser
 // user info in detail
 class UserInfo
 {
-	late String email;
-	late String phone;
-	late DateTime birthDate;
+	email
+	phone
+	birthDate
 }
 
 
