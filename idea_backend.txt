@@ -14,11 +14,21 @@ Users:  collection
 		onlineStatus:  boolean         // update status realtime?
 		avatar:  				// Firebase Cloud Storage? 
 		
-		friends:  collection
+		Friends:  collection
 		[
 			randomID:  document
 			{
 				email:  str 		// FK
+			}
+
+			...
+		]
+
+		Chatrooms:  collection
+		[
+			randomID: document
+			{
+				roomID: str
 			}
 
 			...
@@ -36,7 +46,7 @@ Chatrooms:  collection
 	{
 		name:  str
 
-		users:  collection
+		Users:  collection
 		[
 			randomID:  document
 			{
@@ -44,11 +54,11 @@ Chatrooms:  collection
 			}
 		]
 		
-		messages:  collection
+		Messages:  collection
 		[
 			randomID:  document
 			{
-				fromUser:  str 			// FK
+				fromUser:  str 				// FK
 				timeStamp:  datetime 	// PK
 				content:  str
 			}
@@ -67,37 +77,48 @@ Chatrooms:  collection
 
 	==== Model ====
 
+// basic info of a user
+//    -> use in chat list, chat room, friend list
+class GeneralUser
+{
+
+	fullname
+	avatar
+	onlineStatus
+}
+
+
 // authentication for logged in user
 //    -> use to identify who send what request
 //    ex: add friend, send new message...
-class CurrentUser
+class CurrentUser : GeneralUser
 {
 	email
 }
 
-// basic user info
-class GeneralUser
-{
-	// basic info of a user
-	//    -> use in chat list, chat room, friend list
-	fullname
-	avatar
-	bio
-	onlineStatus
 
-	// a dart late object of call UserInfo
-	//    -> only define when needed extra info
-	//    ex: view user info...
-	late userInfo
-}
-
-// user info in detail
-class UserInfo
+// a detail user
+//   -> use for users profile page
+class DetailUser : GeneralUser
 {
 	email
 	phone
 	birthDate
+	bio
 }
 
 
-.... in progress ....
+
+class Chatroom
+{
+	roomID
+	list<GeneralUser>
+	list<Message>				//  to stored latest messages
+}
+
+class Message 		// aggregation to Chatroom
+{
+	fromUser
+	timestamp
+	content
+}
