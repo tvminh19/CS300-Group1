@@ -3,7 +3,7 @@
 
 Users:  collection
 [	
-	randomID:  document
+	userEmailAsID:  document
 	{
 		email:  str (QR generator: qr_flutter) 		// PK
 		username:  str
@@ -11,8 +11,8 @@ Users:  collection
 		dob:  datetime
 		phone:  str
 		bio:  str
-		onlineStatus:  boolean         // update status realtime?
-		avatar:  				// Firebase Cloud Storage? 
+		onlinestatus:  boolean         		// update status realtime?
+		avatar:  							// Firebase Cloud Storage? 
 		
 		Friends:  collection
 		[
@@ -26,9 +26,9 @@ Users:  collection
 
 		Chatrooms:  collection
 		[
-			randomID: document
+			randomID:  document
 			{
-				roomID: str
+				roomid:  str 		// FK
 			}
 
 			...
@@ -37,7 +37,6 @@ Users:  collection
 
 	...
 ]
-
 
 
 Chatrooms:  collection
@@ -58,8 +57,8 @@ Chatrooms:  collection
 		[
 			randomID:  document
 			{
-				fromUser:  str 				// FK
-				timeStamp:  datetime 	// PK
+				fromuser:  str 				// FK
+				timestamp:  datetime 		// PK
 				content:  str
 			}
 
@@ -73,52 +72,120 @@ Chatrooms:  collection
 
 
 
-
-
 	==== Model ====
 
-// basic info of a user
-//    -> use in chat list, chat room, friend list
-class GeneralUser
+class User
 {
+	final String email;
+	late final String username;
+	late final String fullname;
+	late final DateTime dob;
+	late final String phone;
+	late final String bio;
+	late final bool onlineStatus;
+	late final Image? avatar;
 
-	fullname
-	avatar
-	onlineStatus
+
+	// === constructors === //
+
+	User._({
+		required this.email
+	});
+
+
+	User.basic({
+		required this.email,
+		required this.fullname,
+		required this.avatar
+	});
+
+
+	User.general({
+		required this.email,
+		required this.fullname,
+		required this.avatar,
+		required this.bio
+	});
+
+
+	User.detail({
+		required this.email,
+		required this.fullname,
+		required this.dob,
+		required this.phone,
+		required this.bio,
+		required this.avatar
+	});
 }
 
 
-// authentication for logged in user
-//    -> use to identify who send what request
-//    ex: add friend, send new message...
-class CurrentUser : GeneralUser
+class AuthUser extends User 			// singleton
 {
-	email
+	static AuthUser? _instance;
+
+
+	AuthUser._firsttime(
+		String email
+	) : super._(
+		email: email
+	);
+
+
+	AuthUser._loggedin(
+		String email,
+		String fullname,
+		DateTime dob,
+		String phone,
+		String bio,
+		Image? avatar
+	) : super.detail(
+		email: email,
+		fullname: fullname,
+		dob: dob,
+		phone: phone,
+		bio: bio,
+		avatar: avatar
+	);
+
+
+	static void initUser(String email)
+	{
+		if (_instance == null)
+		{
+			_instance = AuthUser._firsttime(email);
+    	}
+    	else
+    	{
+    		throw Exception("Trying to create more than 1 instance of the singleton class AuthUser");
+    	}
+    }
+
+
+    static AuthUser getUser()
+    {
+    	if (_instance != null)
+    	{
+    		return _instance!;
+    	}
+    	else
+    	{
+    		throw Exception("Trying to access un-initialized single class AuthUser");
+    	}
+    }
 }
-
-
-// a detail user
-//   -> use for users profile page
-class DetailUser : GeneralUser
-{
-	email
-	phone
-	birthDate
-	bio
-}
-
 
 
 class Chatroom
 {
-	roomID
-	list<GeneralUser>
-	list<Message>				//  to stored latest messages
+ 	final String roomID;
+ 	final List<User> lstUser;
+ 	List<Message> lstMessage;				//  to stored latest messages
 }
 
-class Message 		// aggregation to Chatroom
+
+class Message  					// aggregation to Chatroom
 {
-	fromUser
-	timestamp
-	content
+ 	String fromUser;
+ 	DateTime timestamp;
+ 	String content;
 }
