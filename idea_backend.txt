@@ -1,5 +1,30 @@
+	==== PACKAGES ====
 
-	==== Database ====
+API
+	Google Firebase's Cloud Firestore:
+		Database for users/chatrooms/messages info
+	
+	Google Firebase's Authentication:
+		For sign in/sign up
+	
+		For storing images (avatar)
+
+Services (backend codes)
+	AuthService
+		sign in/sign up to Google Firebase's Authentication
+		call DatabaseService to add new user data to Cloud Firestore
+	
+	DatabaseService
+		get/add/update/delete data to Cloud Firestore
+		get/add/update/delete data to Cloud Storage
+		resolve references between Cloud Firestore and Cloud Storage (user - avatar)
+
+		resolve client's model <---> DB's data 
+
+
+
+
+	==== DATABASE ====
 
 Users:  collection
 [	
@@ -70,7 +95,7 @@ Chatrooms:  collection
 
 
 
-	==== Model ====
+	==== MODEL ====
 
 class User
 {
