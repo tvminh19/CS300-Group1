@@ -7,8 +7,9 @@ class Chat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(children: [
+      SizedBox(height: 10),
       SizedBox(
-        width: 350,
+        height: 40,
         child: TextField(
           obscureText: true,
           decoration: InputDecoration(
@@ -25,6 +26,41 @@ class Chat extends StatelessWidget {
           ),
         ),
       ),
+      UserItem(
+          fullName: 'Trinh Van Minh',
+          lastMessage: 'What\'s going on?',
+          imageUrl: 'imageUrl',
+          messageNumer: 5),
+      UserItem(
+          fullName: 'Trinh Van Minh',
+          lastMessage: 'What\'s going on?',
+          imageUrl: 'imageUrl',
+          messageNumer: 5),
+      UserItem(
+          fullName: 'Trinh Van Minh',
+          lastMessage: 'What\'s going on?',
+          imageUrl: 'imageUrl',
+          messageNumer: 5),
+      UserItem(
+          fullName: 'Trinh Van Minh',
+          lastMessage: 'What\'s going on?',
+          imageUrl: 'imageUrl',
+          messageNumer: 5),
+      UserItem(
+          fullName: 'Trinh Van Minh',
+          lastMessage: 'What\'s going on?',
+          imageUrl: 'imageUrl',
+          messageNumer: 5),
+      UserItem(
+          fullName: 'Trinh Van Minh',
+          lastMessage: 'What\'s going on?',
+          imageUrl: 'imageUrl',
+          messageNumer: 5),
+      UserItem(
+          fullName: 'Trinh Van Minh',
+          lastMessage: 'What\'s going on?',
+          imageUrl: 'imageUrl',
+          messageNumer: 5),
       UserItem(
           fullName: 'Trinh Van Minh',
           lastMessage: 'What\'s going on?',
