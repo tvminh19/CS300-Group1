@@ -11,30 +11,27 @@ Users:  collection
 		dob:  datetime
 		phone:  str
 		bio:  str
-		onlinestatus:  boolean         		// update status realtime?
-		avatar:  							// Firebase Cloud Storage? 
+		onlinestatus:  boolean				// update status realtime?
+		avatar:  str									// path to Cloud Storage file location
 		
 		Friends:  collection
 		[
-			randomID:  document
+			userEmailAsID:  document
 			{
-				email:  str 		// FK
+				userref:  reference 		// FK
 			}
-
 			...
 		]
 
 		Chatrooms:  collection
 		[
-			randomID:  document
+			roomID:  document
 			{
-				roomid:  str 		// FK
+				roomref:  reference 		// FK
 			}
-
 			...
 		]
 	}
-
 	...
 ]
 
@@ -47,21 +44,22 @@ Chatrooms:  collection
 
 		Users:  collection
 		[
-			randomID:  document
+			userEmailAsID:  document
 			{
-				email:  str
+				userref:  reference
 			}
+			...
 		]
 		
 		Messages:  collection
 		[
 			randomID:  document
 			{
-				fromuser:  str 				// FK
-				timestamp:  datetime 		// PK
+				senderref:  reference 				// FK
+				timestamp:  datetime 				// PK
 				content:  str
+				seenstatus:  boolean				// for private only
 			}
-
 			...
 		]
 	}
