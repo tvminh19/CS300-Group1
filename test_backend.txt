@@ -89,7 +89,7 @@ Users
 		
 		username:  "nlvphu"
 		
-		fullname:  "Phu"
+		fullname:  "Nguyen Lam Vinh Phu"
 		
 		dob:  1 Sep 2020, 00:00
 		
@@ -125,7 +125,7 @@ Users
 		
 		username:  "nhhieu"
 		
-		fullname:  "Hieu"
+		fullname:  "Nguyen Hoang Hieu"
 		
 		dob:  1 Jul 2020, 00:00
 		
