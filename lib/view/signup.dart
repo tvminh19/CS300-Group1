@@ -4,8 +4,8 @@ import 'package:chat_app/Widgets/my_btn.dart';
 import 'package:chat_app/Widgets/my_input_form.dart';
 import 'package:chat_app/Widgets/my_text_style.dart';
 import 'package:chat_app/services/auth.dart';
+import 'package:chat_app/services/constance.dart';
 import 'package:chat_app/services/database.dart';
-import 'package:chat_app/services/helper_function.dart';
 import 'package:chat_app/view/signin.dart';
 import 'package:flutter/material.dart';
 
@@ -37,14 +37,14 @@ class _SignupScreenState extends State<SignupScreen> {
         "email": emailTC.text
       };
 
-      HelperFunction.saveUserEmail(emailTC.text);
-      HelperFunction.saveUserName(usernameTC.text);
+      Constance.email = emailTC.text;
+      Constance.myName = usernameTC.text;
 
       authMethods
           .signUpWithEmailAndPassword(emailTC.text, passwordTC.text)
           .then((val) {
         databaseMethod.uploadUserInfo(userInfoMap);
-        HelperFunction.saveUserLoggedIn(true);
+        Constance.isLoggedIn = true;
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const ChatRoomScreen()));
       });

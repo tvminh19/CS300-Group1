@@ -5,10 +5,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Conversation extends StatefulWidget {
-  final String classroomID;
+  final String chatroomID;
   const Conversation({
     Key? key,
-    required this.classroomID,
+    required this.chatroomID,
   }) : super(key: key);
 
   @override
@@ -28,8 +28,10 @@ class _ConversationState extends State<Conversation> {
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
-              return messTitle(
-                  content: snapshot.data!.docs[index].get("message"));
+              return MessTitle(
+                  content: snapshot.data!.docs[index].get("message"),
+                  isSendbyMe: snapshot.data!.docs[index].get("sendBy") ==
+                      Constance.myName);
             },
           );
         } else {
@@ -41,11 +43,12 @@ class _ConversationState extends State<Conversation> {
 
   sendMessage() {
     if (messTC.text.isNotEmpty) {
-      Map<String, String> messMap = {
+      Map<String, dynamic> messMap = {
         "message": messTC.text,
         "sendBy": Constance.myName,
+        "time": DateTime.now().millisecondsSinceEpoch,
       };
-      databaseMethod.addConversationContent(widget.classroomID, messMap);
+      databaseMethod.addConversationContent(widget.chatroomID, messMap);
       messTC.text = "";
     }
   }
@@ -53,8 +56,7 @@ class _ConversationState extends State<Conversation> {
   @override
   void initState() {
     setState(() {
-      chatMessStream =
-          databaseMethod.getConversationContent(widget.classroomID);
+      chatMessStream = databaseMethod.getConversationContent(widget.chatroomID);
     });
     super.initState();
   }
@@ -97,6 +99,37 @@ class _ConversationState extends State<Conversation> {
   }
 }
 
-Widget messTitle({required String content}) {
-  return Text(content);
+class MessTitle extends StatelessWidget {
+  final String content;
+  final bool isSendbyMe;
+  const MessTitle({
+    Key? key,
+    required this.content,
+    required this.isSendbyMe,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: isSendbyMe ? Alignment.centerRight : Alignment.centerLeft,
+      width: MediaQuery.of(context).size.width,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        decoration: BoxDecoration(
+          color: isSendbyMe ? Colors.blueAccent : Colors.grey,
+          borderRadius: isSendbyMe
+              ? const BorderRadius.only(
+                  topLeft: Radius.circular(23),
+                  topRight: Radius.circular(23),
+                  bottomLeft: Radius.circular(23))
+              : const BorderRadius.only(
+                  topLeft: Radius.circular(23),
+                  topRight: Radius.circular(23),
+                  bottomRight: Radius.circular(23)),
+        ),
+        child: Text(content),
+      ),
+    );
+  }
 }

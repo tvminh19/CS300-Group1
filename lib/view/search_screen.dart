@@ -63,7 +63,7 @@ class _SearchScreenState extends State<SearchScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Conversation(classroomID: chatroomid),
+            builder: (context) => Conversation(chatroomID: chatroomid),
           ));
     } else {
       log("You can not message with yourself");

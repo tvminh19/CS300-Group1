@@ -1,13 +1,12 @@
 import 'dart:developer';
-
 import 'package:chat_app/Widgets/my_appbar.dart';
 import 'package:chat_app/Widgets/my_box_decorator.dart';
 import 'package:chat_app/Widgets/my_btn.dart';
 import 'package:chat_app/Widgets/my_input_form.dart';
 import 'package:chat_app/Widgets/my_text_style.dart';
 import 'package:chat_app/services/auth.dart';
+import 'package:chat_app/services/constance.dart';
 import 'package:chat_app/services/database.dart';
-import 'package:chat_app/services/helper_function.dart';
 import 'package:chat_app/view/chat_room_screen.dart';
 import 'package:chat_app/view/signup.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   DatabaseMethod databaseMethod = DatabaseMethod();
   bool isLoading = false;
   late QuerySnapshot querySnapshot;
+
   signIn() async {
     if (formKey.currentState!.validate()) {
       setState(() {
@@ -37,19 +37,18 @@ class _LoginScreenState extends State<LoginScreen> {
       });
       querySnapshot = await databaseMethod.getUserbyEmail(emailTC.text);
       if (querySnapshot.size != 0) {
-        HelperFunction.saveUserName(querySnapshot.docs[0].get("name"));
-        log("GetUserbyEmail -> " + querySnapshot.docs[0].get("name"));
-      }
-      else{
+        Constance.myName = querySnapshot.docs[0].get("name");
+        log("[OKAY] saveUserName -> " + Constance.myName);
+      } else {
         log("querysnapshoot is null");
       }
 
-      HelperFunction.saveUserEmail(emailTC.text);
+      Constance.email = emailTC.text;
       authMethods
           .signInWithEmailAndPassword(emailTC.text, passwordTC.text)
           .then((value) {
         if (value != null) {
-          HelperFunction.saveUserLoggedIn(true);
+          Constance.isLoggedIn = true;
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(

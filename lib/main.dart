@@ -1,4 +1,5 @@
-import 'package:chat_app/services/helper_function.dart';
+import 'package:chat_app/services/constance.dart';
+import 'package:chat_app/view/chat_room_screen.dart';
 import 'package:chat_app/view/signin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,18 +21,8 @@ class _MyAppState extends State<MyApp> {
   bool isLoggedIn = false;
   @override
   void initState() {
-    getLogginState();
+    isLoggedIn = Constance.isLoggedIn;
     super.initState();
-  }
-
-  getLogginState() async {
-    await HelperFunction.getUserLoggedIn().then((value) {
-      if (value != null){
-        setState(() {
-          isLoggedIn = value;
-        });
-      }
-    });
   }
 
   // This widget is the root of your application.
@@ -43,8 +34,8 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: isLoggedIn? const ChatRoomScreen() : const LoginScreen(),
-      home: const LoginScreen(),
+      home: isLoggedIn? const ChatRoomScreen() : const LoginScreen(),
+      // home: const LoginScreen(),
     );
   }
 }
