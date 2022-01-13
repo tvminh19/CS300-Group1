@@ -1,8 +1,8 @@
-import 'package:chat_app/services/auth.dart';
-import 'package:chat_app/services/constance.dart';
-import 'package:chat_app/services/database.dart';
-import 'package:chat_app/view/search_screen.dart';
-import 'package:chat_app/view/signin.dart';
+import 'package:paylo_chat/services/auth.dart';
+import 'package:paylo_chat/services/constance.dart';
+import 'package:paylo_chat/services/database.dart';
+import 'package:paylo_chat/view/search_screen.dart';
+import 'package:paylo_chat/view/signin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

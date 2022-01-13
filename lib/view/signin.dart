@@ -1,14 +1,14 @@
 import 'dart:developer';
-import 'package:chat_app/Widgets/my_appbar.dart';
-import 'package:chat_app/Widgets/my_box_decorator.dart';
-import 'package:chat_app/Widgets/my_btn.dart';
-import 'package:chat_app/Widgets/my_input_form.dart';
-import 'package:chat_app/Widgets/my_text_style.dart';
-import 'package:chat_app/services/auth.dart';
-import 'package:chat_app/services/constance.dart';
-import 'package:chat_app/services/database.dart';
-import 'package:chat_app/view/chat_room_screen.dart';
-import 'package:chat_app/view/signup.dart';
+import 'package:paylo_chat/Widgets/my_appbar.dart';
+import 'package:paylo_chat/Widgets/my_box_decorator.dart';
+import 'package:paylo_chat/Widgets/my_btn.dart';
+import 'package:paylo_chat/Widgets/my_input_form.dart';
+import 'package:paylo_chat/Widgets/my_text_style.dart';
+import 'package:paylo_chat/services/auth.dart';
+import 'package:paylo_chat/services/constance.dart';
+import 'package:paylo_chat/services/database.dart';
+import 'package:paylo_chat/view/chat_room_screen.dart';
+import 'package:paylo_chat/view/signup.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar("Mini Chat"),
+      appBar: myAppBar("Paylo! Chat"),
       body: isLoading
           ? Container(
               alignment: Alignment.center,

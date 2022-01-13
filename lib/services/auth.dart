@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:chat_app/models/my_user.dart';
+import 'package:paylo_chat/models/my_user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthMethods {
