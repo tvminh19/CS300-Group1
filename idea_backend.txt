@@ -1,0 +1,215 @@
+	==== PACKAGES ====
+
+API
+	Google Firebase's Cloud Firestore:
+		Database for users/chatrooms/messages info
+	
+	Google Firebase's Authentication:
+		For sign in/sign up
+	
+	Goolge Firebase's Cloud Storage:
+		For storing images (avatar)
+
+Services (backend codes)
+	AuthService
+		sign in/sign up to Google Firebase's Authentication
+		call DatabaseService to add new user data to Cloud Firestore
+	
+	DatabaseService
+		get/add/update/delete data to Cloud Firestore
+		get/add/update/delete data to Cloud Storage
+		resolve references between Cloud Firestore and Cloud Storage (user - avatar)
+
+		resolve client's model <---> DB's data 
+
+
+
+
+	==== DATABASE ====
+
+Users:  collection
+[	
+	userEmailAsID:  document
+	{
+		email:  str (QR generator: qr_flutter) 		// PK
+		username:  str
+		fullname:  str
+		dob:  datetime
+		phone:  str
+		bio:  str
+		onlinestatus:  boolean				// update status realtime?
+		avatar:  str									// path to Cloud Storage file location
+		
+		Friends:  collection
+		[
+			userEmailAsID:  document
+			{
+				userref:  reference 		// FK
+			}
+			...
+		]
+
+		Chatrooms:  collection
+		[
+			roomID:  document
+			{
+				roomref:  reference 		// FK
+			}
+			...
+		]
+	}
+	...
+]
+
+
+Chatrooms:  collection
+[
+	randomID:  document
+	{
+		name:  str
+
+		Users:  collection
+		[
+			userEmailAsID:  document
+			{
+				userref:  reference
+			}
+			...
+		]
+		
+		Messages:  collection
+		[
+			randomID:  document
+			{
+				senderref:  reference 				// FK
+				timestamp:  datetime 				// PK
+				content:  str
+				seenstatus:  boolean				// for private only
+			}
+			...
+		]
+	}
+
+	...
+]
+
+
+
+
+	==== MODEL ====
+
+class User
+{
+	final String email;
+	late final String username;
+	late final String fullname;
+	late final DateTime dob;
+	late final String phone;
+	late final String bio;
+	late final bool onlineStatus;
+	late final Image? avatar;
+
+
+	// === constructors === //
+
+	User._({
+		required this.email
+	});
+
+
+	User.basic({
+		required this.email,
+		required this.fullname,
+		required this.avatar
+	});
+
+
+	User.general({
+		required this.email,
+		required this.fullname,
+		required this.avatar,
+		required this.bio
+	});
+
+
+	User.detail({
+		required this.email,
+		required this.fullname,
+		required this.dob,
+		required this.phone,
+		required this.bio,
+		required this.avatar
+	});
+}
+
+
+class AuthUser extends User 			// singleton
+{
+	static AuthUser? _instance;
+
+
+	AuthUser._firsttime(
+		String email
+	) : super._(
+		email: email
+	);
+
+
+	AuthUser._loggedin(
+		String email,
+		String fullname,
+		DateTime dob,
+		String phone,
+		String bio,
+		Image? avatar
+	) : super.detail(
+		email: email,
+		fullname: fullname,
+		dob: dob,
+		phone: phone,
+		bio: bio,
+		avatar: avatar
+	);
+
+
+	static void initUser(String email)
+	{
+		if (_instance == null)
+		{
+			_instance = AuthUser._firsttime(email);
+    	}
+    	else
+    	{
+    		throw Exception("Trying to create more than 1 instance of the singleton class AuthUser");
+    	}
+    }
+
+
+    static AuthUser getUser()
+    {
+    	if (_instance != null)
+    	{
+    		return _instance!;
+    	}
+    	else
+    	{
+    		throw Exception("Trying to access un-initialized single class AuthUser");
+    	}
+    }
+}
+
+
+class Chatroom
+{
+ 	final String roomID;
+ 	final List<User> lstUser;
+ 	List<Message> lstMessage;				//  to stored latest messages
+}
+
+
+class Message  					// aggregation to Chatroom
+{
+ 	String fromUser;
+ 	DateTime timestamp;
+ 	String content;
+}

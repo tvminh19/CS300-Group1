@@ -1,0 +1,232 @@
+==== Note ====
+
+	"Name [...]"	for a collection of documents
+
+	"name {...}"	for a document
+
+	"attr: val"		for a pair of attribute and value
+
+==== Note ====
+
+
+Users
+[
+	abcd@email.com (pass:"abcd5314")
+	{
+		email:  "abcd@email.com"
+		
+		username:  "abcd"
+		
+		fullname:  "a-bcd"
+		
+		dob: 1 Nov 2021, 00:00
+		
+		phone:  "+012345678"
+		
+		bio:  "abcd is in the house *drops the mic*"
+		
+		onlinestatus:  false
+		
+		avatar:  "gs://paylo-chat.appspot.com/quokka_dribbble_4x.png"
+		
+		Friends
+		[
+			efgh@email.com
+			{
+				userref:  "/Users/efgh@email.com"
+			}
+		]
+
+		Chatrooms
+		[
+			5ea948rB8EtsrmgjbNdg
+			{
+				roomref:  "/Chatrooms/5ea948rB8EtsrmgjbNdg"
+			}
+		]
+	}
+
+
+	efgh@email.com (pass:"1435efgh")
+	{
+		email:  "efgh@email.com"
+		
+		username:  "efgh"
+		
+		fullname:  "efg-h"
+		
+		dob:  1 Sep 2021, 00:00
+		
+		phone:  "+087654321"
+		
+		bio:  "Milady, it's efgh"
+		
+		onlinestatus:  false
+		
+		avatar:  ""
+		
+		Friends
+		[
+			abcd@email.com
+			{
+				userref:  "/Users/abcd@email.com"
+			}
+		]
+
+		Chatrooms
+		[
+			5ea948rB8EtsrmgjbNdg
+			{
+				roomref:  "/Chatrooms/5ea948rB8EtsrmgjbNdg"
+			}
+		]
+	}
+
+
+	nlvphu@email.com (pass:"19125114")
+	{
+		email:  "nlvphu@email.com"
+		
+		username:  "nlvphu"
+		
+		fullname:  "Nguyen Lam Vinh Phu"
+		
+		dob:  1 Sep 2020, 00:00
+		
+		phone:  "+019125114"
+		
+		bio:  "aaaaaaa :VVVVV"
+		
+		onlinestatus:  false
+		
+		avatar:  ""
+		
+		Friends
+		[
+			nhhieu@email.com
+			{
+				userref:  "/Users/nhhieu@email.com"
+			}
+		]
+
+		Chatrooms
+		[
+			twkSuQq9C3GgElBSqCAm
+			{
+				roomref:  "/Chatrooms/twkSuQq9C3GgElBSqCAm"
+			}
+		]
+	}
+
+
+	nhhieu@email.com (pass:"19125091")
+	{
+		email:  "nhhieu@email.com"
+		
+		username:  "nhhieu"
+		
+		fullname:  "Nguyen Hoang Hieu"
+		
+		dob:  1 Jul 2020, 00:00
+		
+		phone:  "+019125091"
+		
+		bio:  "*inserts meme*"
+		
+		onlinestatus:  false
+		
+		avatar:  ""
+		
+		Friends
+		[
+			nlvphu@email.com
+			{
+				userref:  "/Users/nlvphu@email.com"
+			}
+		]
+
+		Chatrooms
+		[
+			twkSuQq9C3GgElBSqCAm
+			{
+				roomref:  "/Chatrooms/twkSuQq9C3GgElBSqCAm"
+			}
+		]
+	}
+]
+
+
+
+Chatrooms
+[
+	5ea948rB8EtsrmgjbNdg
+	{
+		name:  ""
+
+		Users
+		[
+			abcd@email.com
+			{
+				userref:  "/Users/abcd@email.com"
+			}
+			efgh@email.com
+			{
+				userref:  "/Users/efgh@email.com"
+			}
+		]
+
+		Messages
+		[
+			l3QnKQEcLkewp2mVbczO
+			{
+				senderref:  "/Users/efgh@email.com"
+				timestamp:  3 Dec 2021, 18:15
+				content:  "Yes abcd, i, efgh, have been wondering if after all this time you'd like to meet"
+				seenstatus:  false
+			}
+			oOYUvS5eaBnEpLSvbpRc
+			{
+				senderref:  "/Users/abcd@email.com"
+				timestamp:  3 Dec 2021, 17:00
+				content:  "Hello efgh, it's me abcd"
+				seenstatus:  true
+			}
+		]
+	}
+
+
+	twkSuQq9C3GgElBSqCAm
+	{
+		name:  ""
+
+		Users
+		[
+			nlvphu@email.com
+			{
+				userref:  "/Users/nlvphu@email.com"
+			}
+			nhhieu@email.com
+			{
+				userref:  "/Users/nhhieu@email.com"
+			}
+		]
+
+		Messages
+		[
+			fEaXkz8f9vfznPNpklJd
+			{
+				senderref:  "/Users/nhhieu@email.com"
+				timestamp:  15 Dec 2021, 14:45
+				content:  "*some kind of meme here*"
+				seenstatus:  true
+			}
+			ous9c1R822QzcJRDB2Ba
+			{
+				senderref:  "/Users/nlvphu@email.com"
+				timestamp:  15 Dec 2021, 14:47
+				content:  "aaaaaaaaa :VVVVV"
+				seenstatus:  false
+			}
+		]
+	}
+]

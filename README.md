@@ -1,4 +1,4 @@
-# chat_app
+# paylo_chat
 
 A new Flutter project.
 
