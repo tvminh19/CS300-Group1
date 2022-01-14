@@ -1,18 +1,9 @@
-// Minh's
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:paylo_chat/services/constance.dart';
 import 'package:paylo_chat/view/chat_room_screen.dart';
 import 'package:paylo_chat/view/signin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-// Duy's
-// import 'package:paylo_chat/pages/home.dart';
-// import 'package:paylo_chat/pages/login/login.dart';
-// import 'package:paylo_chat/pages/signup/signup.dart';
-
-// Minh's
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

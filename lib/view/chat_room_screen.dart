@@ -38,7 +38,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                   );
                 },
               )
-            : const Text("Empty");
+            : Container();
       },
     );
   }

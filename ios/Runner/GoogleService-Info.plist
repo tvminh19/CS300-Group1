@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1036647595203-c7fk4gmc9bff40dqpgfk9dsjksifhtu4.apps.googleusercontent.com</string>
+	<string>617598860374-ttedgfor4ipoonh0a1n9b4q8pa5k9b3v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1036647595203-c7fk4gmc9bff40dqpgfk9dsjksifhtu4</string>
+	<string>com.googleusercontent.apps.617598860374-ttedgfor4ipoonh0a1n9b4q8pa5k9b3v</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAP15wlK0iX5o_mHt7UBsuxe2900KfPf8E</string>
+	<string>AIzaSyDuzyhDpSHV7ZH21BYDbkfC91zfjHNgZZc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1036647595203</string>
+	<string>617598860374</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.payloChat</string>
 	<key>PROJECT_ID</key>
-	<string>paylo-chat</string>
+	<string>minichatapp-f0044</string>
 	<key>STORAGE_BUCKET</key>
-	<string>paylo-chat.appspot.com</string>
+	<string>minichatapp-f0044.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1036647595203:ios:bf8538cfe43e88b4eb3676</string>
+	<string>1:617598860374:ios:1a3e6be14b244cd5714ff7</string>
 </dict>
 </plist>
