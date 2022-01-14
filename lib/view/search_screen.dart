@@ -1,11 +1,9 @@
 import 'dart:developer';
-
 import 'package:paylo_chat/Widgets/my_appbar.dart';
 import 'package:paylo_chat/services/constance.dart';
 import 'package:paylo_chat/services/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'conversation.dart';
 
 class SearchScreen extends StatefulWidget {
