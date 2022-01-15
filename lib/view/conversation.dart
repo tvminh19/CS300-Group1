@@ -19,6 +19,7 @@ class _ConversationState extends State<Conversation> {
   DatabaseMethod databaseMethod = DatabaseMethod();
   TextEditingController messTC = TextEditingController();
   late Stream<QuerySnapshot> chatMessStream;
+  ScrollController scrollController = ScrollController();
 
   Widget chatMessageList() {
     return StreamBuilder<QuerySnapshot>(
@@ -27,6 +28,7 @@ class _ConversationState extends State<Conversation> {
         if (snapshot.data != null) {
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
+            controller: scrollController,
             itemBuilder: (context, index) {
               return MessTitle(
                   content: snapshot.data!.docs[index].get("message"),
@@ -65,11 +67,15 @@ class _ConversationState extends State<Conversation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppBar("Conversation"),
+      // resizeToAvoidBottomInset: false,
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Stack(
           children: [
-            chatMessageList(),
+            Container(
+              margin: const EdgeInsets.only(bottom: 90),
+              child: chatMessageList(),
+            ),
             Container(
               alignment: Alignment.bottomCenter,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
@@ -86,6 +92,8 @@ class _ConversationState extends State<Conversation> {
                   GestureDetector(
                     onTap: () {
                       sendMessage();
+                      scrollController
+                          .jumpTo(scrollController.position.maxScrollExtent);
                     },
                     child: const Icon(Icons.send_rounded),
                   )

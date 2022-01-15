@@ -48,7 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   creatingChatroomAndStartConversation(String userName) {
     if (userName != Constance.myName) {
-      if (Constance.myName.isEmpty){
+      if (Constance.myName.isEmpty) {
         log(Constance.myName);
       }
       String chatroomid = getChatRoomId(userName, Constance.myName);
@@ -64,7 +64,19 @@ class _SearchScreenState extends State<SearchScreen> {
             builder: (context) => Conversation(chatroomID: chatroomid),
           ));
     } else {
-      log("You can not message with yourself");
+      showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Error'),
+          content: const Text("You can not message with yourself"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
   }
 

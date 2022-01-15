@@ -168,7 +168,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     const SizedBox(
-                      height: 40,
+                      height: 10,
                     ),
                     SizedBox(
                       width: 350,
@@ -253,21 +253,32 @@ class _SignupScreenState extends State<SignupScreen> {
                         controller: confirmPasswordTC,
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.pop(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ),
-                          );
-                        },
-                        child:
-                            const Text('Already have an account? Log in now.'),
+                    const SizedBox(height: 30,),
+                    Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Don\'t have an account?',
                       ),
-                    ),
+                      const SizedBox(width: 8,),
+                      GestureDetector(
+                        onTap: () => {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginScreen()))
+                        },
+                        child: const Text(
+                          'Login now',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                     const SizedBox(
                       height: 15,
                     ),
@@ -294,7 +305,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     const Text('Or login with'),
                     const SizedBox(
-                      height: 30,
+                      height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
